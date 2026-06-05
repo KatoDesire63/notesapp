@@ -1,4 +1,17 @@
+version: 1
+backend:
+  phases:
+    build:
+      commands:
+        - npm ci --cache .npm --prefer-offline
+frontend:
+  phases:
+    build:
+      commands:
+        - npm run build
+  artifacts:
+    baseDirectory: .next  # Change to 'dist' or 'build' if using Vite/React
+    files:
+      - '**/*'
 cache:
-  paths:
-    - node_modules/**/*
-    - .npm/**/*
+  paths: []  # This explicitly leaves the cache empty
